@@ -33,7 +33,7 @@ namespace HomeTaskNumber1
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Url = "https://www.google.com";
         }
-
+        
         [Test]
         [Author("AlexGrech")]
         [Category("Test case ID: 1")]
@@ -56,6 +56,31 @@ namespace HomeTaskNumber1
             Assert.IsTrue(driver.FindElement(logoutButton).Displayed); // "Log out" button present on page
             Assume.That(driver.FindElement(nameShow).Displayed); // "username" present on page
             Assert.AreEqual("Welcome "+ username, driver.FindElement(nameShow).Text); //correct username present
+        }
+
+        [Ignore("alternative example")]
+        [TestCase("username", "password")]
+        [Author("AlexGrech")]
+        [Category("Test case ID: 1")]
+        [Description("Verify that it is possible to login with valid credentials")]
+        public void Test2(string name, string pass)
+        {
+            WebDriverWait wait = new(driver, TimeSpan.FromSeconds(3)); //explicit wait declaration
+            driver.Navigate().GoToUrl(testPageUrl);
+            //wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage)); //explicit wait in case when implicite is turned off
+            driver.FindElement(loginButtonMainPage).Click();
+            IWebElement usernameField = driver.FindElement(usernameInputField);
+            //wait.Until(ExpectedConditions.ElementIsVisible(usernameInputField));  //explicit wait in case when implicite is turned off
+            usernameField.Clear();
+            usernameField.SendKeys(name);
+            IWebElement passwordField = driver.FindElement(passwordInputField);
+            passwordField.Clear();
+            passwordField.SendKeys(pass);
+            driver.FindElement(loginButton).Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(logoutButton)); //explicit wait
+            Assert.IsTrue(driver.FindElement(logoutButton).Displayed); // "Log out" button present on page
+            Assume.That(driver.FindElement(nameShow).Displayed); // "username" present on page
+            Assert.AreEqual("Welcome " + username, driver.FindElement(nameShow).Text); //correct username present
         }
 
         [OneTimeTearDown]
