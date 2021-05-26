@@ -53,7 +53,6 @@ namespace HomeTaskNumber1
             Assert.IsTrue(driver.FindElement(logoutButton).Displayed); // "Log out" button present on page
             Assume.That(driver.FindElement(nameShow).Displayed); // "username" present on page
             Assert.AreEqual("Welcome "+ username, driver.FindElement(nameShow).Text); //correct username present
-            Thread.Sleep(3000);
         }
 
         [OneTimeTearDown]
