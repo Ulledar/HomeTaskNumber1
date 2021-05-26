@@ -3,8 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using static System.Console;
-using System.Threading;
 
 namespace HomeTaskNumber1
 {
