@@ -11,6 +11,7 @@ namespace HomeTaskNumber1
     public class Tests
     {
         private IWebDriver driver;
+        
 
         #region Locators
         private readonly By loginButtonMainPage = By.Id("login2");
@@ -37,7 +38,7 @@ namespace HomeTaskNumber1
         [Test]
         public void Test1()
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+            WebDriverWait wait = new(driver, TimeSpan.FromSeconds(3));
             driver.Navigate().GoToUrl(testPageUrl);
             wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage));
             driver.FindElement(loginButtonMainPage).Click();
@@ -51,7 +52,8 @@ namespace HomeTaskNumber1
             driver.FindElement(loginButton).Click();
             wait.Until(ExpectedConditions.ElementIsVisible(logoutButton));
             Assert.IsTrue(driver.FindElement(logoutButton).Displayed); // "Log out" button present on page
-            Assert.IsTrue(driver.FindElement(nameShow).Displayed); // "username" present on page
+            Assume.That(driver.FindElement(nameShow).Displayed); // "username" present on page
+            Assert.AreEqual("Welcome "+ username, driver.FindElement(nameShow).Text); //correct username present
             Thread.Sleep(3000);
         }
 
