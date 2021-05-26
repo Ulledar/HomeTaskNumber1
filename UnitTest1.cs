@@ -18,11 +18,11 @@ namespace HomeTaskNumber1
         private readonly By loginButton = By.XPath("//button[contains(text(), 'Log in')]");
         private readonly By logoutButton = By.CssSelector("#logout2");
         private readonly By nameShow = By.XPath("//a[@id='nameofuser']");
+        #endregion
 
         private readonly string testPageUrl = "https://www.demoblaze.com/index.html";
         private readonly string username = "username";
         private readonly string password = "password";
-        #endregion
 
         [OneTimeSetUp]
         public void Setup()
