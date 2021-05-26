@@ -11,7 +11,6 @@ namespace HomeTaskNumber1
     public class Tests
     {
         private IWebDriver driver;
-        
 
         #region Locators
         private readonly By loginButtonMainPage = By.Id("login2");
