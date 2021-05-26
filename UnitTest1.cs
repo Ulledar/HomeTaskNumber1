@@ -28,7 +28,7 @@ namespace HomeTaskNumber1
         public void Setup()
         {
             driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);  //implicit wait declaration
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);  //implicit wait declaration
             driver.Manage().Window.Maximize();
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Url = "https://www.google.com";
@@ -42,10 +42,10 @@ namespace HomeTaskNumber1
         {
             WebDriverWait wait = new(driver, TimeSpan.FromSeconds(3)); //explicit wait declaration
             driver.Navigate().GoToUrl(testPageUrl);
-            //wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage)); //explicit wait in case when implicite is turned off
+            wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage)); //explicit wait
             driver.FindElement(loginButtonMainPage).Click();
             IWebElement usernameField = driver.FindElement(usernameInputField);
-            //wait.Until(ExpectedConditions.ElementIsVisible(usernameInputField));  //explicit wait in case when implicite is turned off
+            wait.Until(ExpectedConditions.ElementIsVisible(usernameInputField));  //explicit wait
             usernameField.Clear();
             usernameField.SendKeys(username);
             IWebElement passwordField = driver.FindElement(passwordInputField);
@@ -67,10 +67,10 @@ namespace HomeTaskNumber1
         {
             WebDriverWait wait = new(driver, TimeSpan.FromSeconds(3)); //explicit wait declaration
             driver.Navigate().GoToUrl(testPageUrl);
-            //wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage)); //explicit wait in case when implicite is turned off
+            wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage)); //explicit wait
             driver.FindElement(loginButtonMainPage).Click();
             IWebElement usernameField = driver.FindElement(usernameInputField);
-            //wait.Until(ExpectedConditions.ElementIsVisible(usernameInputField));  //explicit wait in case when implicite is turned off
+            wait.Until(ExpectedConditions.ElementIsVisible(usernameInputField));  //explicit wait
             usernameField.Clear();
             usernameField.SendKeys(name);
             IWebElement passwordField = driver.FindElement(passwordInputField);
