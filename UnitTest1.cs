@@ -57,7 +57,7 @@ namespace HomeTaskNumber1
             Assert.AreEqual("Welcome "+ username, driver.FindElement(nameShow).Text, "No error text.");
         }
 
-        [Ignore("alternative example")]
+        [Ignore("alternative example with TestCase")]
         [TestCase("username", "password")]
         [Author("AlexGrech")]
         [Category("Test case ID: 1")]
