@@ -52,9 +52,9 @@ namespace HomeTaskNumber1
             passwordField.SendKeys(password);
             driver.FindElement(loginButton).Click();
             wait.Until(ExpectedConditions.ElementIsVisible(logoutButton));
-            Assert.IsTrue(driver.FindElement(logoutButton).Displayed, "No error.");
+            Assert.IsTrue(driver.FindElement(logoutButton).Displayed, "No button");
             Assume.That(driver.FindElement(nameShow).Displayed);
-            Assert.AreEqual("Welcome "+ username, driver.FindElement(nameShow).Text, "No error text.");
+            Assert.AreEqual("Welcome "+ username, driver.FindElement(nameShow).Text, "No name field");
         }
 
         [Ignore("alternative example with TestCase")]
@@ -77,9 +77,9 @@ namespace HomeTaskNumber1
             passwordField.SendKeys(pass);
             driver.FindElement(loginButton).Click();
             wait.Until(ExpectedConditions.ElementIsVisible(logoutButton));
-            Assert.IsTrue(driver.FindElement(logoutButton).Displayed, "No error.");
+            Assert.IsTrue(driver.FindElement(logoutButton).Displayed, "No button");
             Assume.That(driver.FindElement(nameShow).Displayed);
-            Assert.AreEqual("Welcome " + username, driver.FindElement(nameShow).Text, "No error text.");
+            Assert.AreEqual("Welcome " + username, driver.FindElement(nameShow).Text, "No name field");
         }
 
         [OneTimeTearDown]
