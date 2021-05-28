@@ -39,19 +39,19 @@ namespace HomeTaskNumber1
         [Description("Verify that it is possible to login with valid credentials")]
         public void Test1()
         {
-            WebDriverWait wait = new(driver, TimeSpan.FromSeconds(3));
+            WebDriverWait wait = new(driver, new TimeSpan(0, 0, 10));
             driver.Navigate().GoToUrl(testPageUrl);
-            wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(loginButtonMainPage));
             driver.FindElement(loginButtonMainPage).Click();
             IWebElement usernameField = driver.FindElement(usernameInputField);
-            wait.Until(ExpectedConditions.ElementIsVisible(usernameInputField));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(usernameInputField));
             usernameField.Clear();
             usernameField.SendKeys(username);
             IWebElement passwordField = driver.FindElement(passwordInputField);
             passwordField.Clear();
             passwordField.SendKeys(password);
             driver.FindElement(loginButton).Click();
-            wait.Until(ExpectedConditions.ElementIsVisible(logoutButton));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(logoutButton));
             Assert.IsTrue(driver.FindElement(logoutButton).Displayed, "No button");
             Assume.That(driver.FindElement(nameShow).Displayed);
             Assert.AreEqual("Welcome "+ username, driver.FindElement(nameShow).Text, "No name field");
@@ -64,19 +64,19 @@ namespace HomeTaskNumber1
         [Description("Verify that it is possible to login with valid credentials")]
         public void Test2(string name, string pass)
         {
-            WebDriverWait wait = new(driver, TimeSpan.FromSeconds(3));
+            WebDriverWait wait = new(driver, new TimeSpan(0, 0, 10));
             driver.Navigate().GoToUrl(testPageUrl);
-            wait.Until(ExpectedConditions.ElementIsVisible(loginButtonMainPage));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(loginButtonMainPage));
             driver.FindElement(loginButtonMainPage).Click();
             IWebElement usernameField = driver.FindElement(usernameInputField);
-            wait.Until(ExpectedConditions.ElementIsVisible(usernameInputField));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(usernameInputField));
             usernameField.Clear();
             usernameField.SendKeys(name);
             IWebElement passwordField = driver.FindElement(passwordInputField);
             passwordField.Clear();
             passwordField.SendKeys(pass);
             driver.FindElement(loginButton).Click();
-            wait.Until(ExpectedConditions.ElementIsVisible(logoutButton));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(logoutButton));
             Assert.IsTrue(driver.FindElement(logoutButton).Displayed, "No button");
             Assume.That(driver.FindElement(nameShow).Displayed);
             Assert.AreEqual("Welcome " + username, driver.FindElement(nameShow).Text, "No name field");
